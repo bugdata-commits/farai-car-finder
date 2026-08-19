@@ -5,36 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>Farai Car Finder • Zimbabwe</title>
 <style>
-* { box-sizing:border-box; margin:0; padding:0; }
-html, body { height:100vh; font-family: system-ui, sans-serif; color:#e5e5e5; background:#0a0a1a; overflow-x:hidden; }
-.container { max-width:420px; margin:0 auto; padding:20px; }
-h1, h2, h3 { font-weight:800; line-height:1.2; }
-.btn { display:inline-block; padding:12px 24px; background:#00f5ff; color:#000; border:none; border-radius:8px; font-weight:600; cursor:pointer; transition:.2s; }
-.btn:hover { background:#00c8cb; transform:scale(.98); }
-.input { width:100%; padding:12px; border-radius:8px; border:1px solid #333; background:rgba(255,255,255,.08); color:#e5e5e5; font-size:15px; }
-.input:focus { outline:2px solid #00f5ff; }
-.card { background:rgba(255,255,255,.06); border-radius:20px; border:1px solid rgba(255,255,255,.08); padding:20px; margin-bottom:16px; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a1a;color:#e5e5e5;font-family:system-ui,sans-serif;min-height:100vh}
+.container{max-width:420px;margin:0 auto;padding:20px}
+h1{font-weight:800;max-width:300px}
+.btn{display:inline-block;padding:12px 24px;background:#00f5ff;color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer}
+.card{background:rgba(255,255,255,.06);border-radius:16px;padding:20px;margin:16px 0;border:1px solid rgba(255,255,255,.08)}
 </style>
 </head>
 <body>
 <div class="container">
 <h1>🚗 Farai Car Finder</h1>
-<form style="margin:24px 0">
-<input type="text" placeholder="Search cars..." style="margin-bottom:12px">
-<button class="btn">Search</button>
-</form>
-<h2>Available Cars</h2>
+<p>Find cars in Zimbabwe</p>
 <div id="cars"></div>
 </div>
 <script>
-const cars = [
-  {name: 'Toyota Land Cruiser', price: 'ZWR 25,000,000', type: 'SUV'},
-  {name: 'Honda CR-V', price: 'ZWR 18,500,000', type: 'SUV'},
-  {name: 'VW Golf', price: 'ZWR 8,500,000', type: 'Sedan'}
-];
-document.getElementById('cars').innerHTML = cars.map(c => 
-  `<div class="card"><h3>${c.name}</h3><p>${c.type} • ${c.price}</p></div>`
-).join('');
+const cars=[{name:'Toyota Land Cruiser',price:'25M ZWR',type:'SUV'},{name:'Honda CR-V',price:'18M ZWR',type:'SUV'}];
+document.getElementById('cars').innerHTML=cars.map(c=>`<div class="card"><h3>${c.name}</h3><p>${c.type} - ${c.price}</p></div>`).join('');
 </script>
 </body>
 </html>
