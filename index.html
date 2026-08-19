@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>Farai Car Finder • Zimbabwe</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jetubrari:wght@700;600;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root{
   --bg:#0a0a1a;
@@ -15,14 +15,13 @@
   --text:#e5e5e5;
   --text-dim:#b3b3c0;
   --accent:#00f5ff;
-  --accent-dark:#00c8cb;
   --gold:#f59e0b;
   --radius:20px;
   --maxw:420px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-html,body{background:var(--bg);overflow-x:hidden;min-height:100vh;font-family:'Jetubrari','Inter',system-ui,sans-serif;color:var(--text);backdrop-filter:blur(20px)}
+html,body{background:var(--bg);overflow-x:hidden;min-height:100vh;font-family:'Inter',system-ui,sans-serif;color:var(--text);backdrop-filter:blur(20px)}
 img,svg{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 
 /* Neon lane-marking background */
@@ -38,163 +37,66 @@ body::before{
 }
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
-.glass{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-}
-
-/* Animations */
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(0,245,255,.3);},70%{box-shadow:0 0 0 12px rgba(0,245,255,0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.glass{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 
 [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-[data-reveal].in-view{opacity:1;transform:translateY(0);animation:glow 2s ease infinite}
-
-.hamburger{
-  display:none;
-  width:44px;height:44px;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.08);border:none;border-radius:50%;cursor:pointer;z-index:101
-}
-.hamburger span,.hamburger span::before,.hamburger span::after{
-  content:"";display:block;width:18px;height:2px;background:var(--text);position:relative;transition:.3s
-}
-.hamburger.open span{background:transparent}
-.hamburger.open span::before{transform:translateY(6px) rotate(45px)}
-.hamburger.open span::after{transform:translateY(-6px) rotate(-45px)}
+[data-reveal].in-view{opacity:1;transform:translateY(0)}
 
 /* Header */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;background:rgba(10,10,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 16px}
 .logo{font-weight:800;font-size:18px;color:#fff;line-height:1}
 
-/* Mode tabs - sliding neon */
-.mode-tabs{
-  display:flex;gap:4px;border-bottom:1px solid var(--border);padding-bottom:8px
-}
-.tab{
-  padding:10px 16px;background:transparent;border:none;cursor:pointer;color:var(--text-dim);font-size:13px;border-radius:999px;transition:.2s
-}
-.tab.active{
-  background:var(--accent);
-  color:#000;
-  animation:glow 1.5s ease infinite
-}
+/* Mode tabs */
+.mode-tabs{display:flex;gap:6px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.tab{padding:10px 18px;background:transparent;border:none;cursor:pointer;color:var(--text-dim);font-size:14px;border-radius:999px;transition:.2s}
+.tab.active{background:var(--accent);color:#000;font-weight:600}
 
 /* Search button */
-.search-btn{
-  display:inline-flex;align-items:center;gap:8px;padding:12px 20px;
-  background:var(--accent);color:#000;border:none;border-radius:999px;
-  font-weight:600;cursor:pointer;transition:.3s
-}
+.search-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--accent);color:#000;border:none;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s;box-shadow:0 4px 14px rgba(0,245,255,.3)}
 .search-btn:hover{transform:scale(.97)}
 
+/* User avatar */
+#user-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;cursor:pointer}
+
 /* Hero */
-.hero{
-  padding-top:calc(72px + 64px);
-  padding-bottom:48px;
-  text-align:center;
-  background:linear-gradient(135deg,#0a0a1e,#1a1a3e);
-}
-.hero-title{
-  font-size:2.6rem;
-  font-weight:800;
-  line-height:1.1;
-  margin-bottom:16px;
-  color:#fff;
-  background:linear-gradient(90deg,var(--accent),#00c8cb);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.hero-subtitle{
-  font-size:16px;
-  color:#a3a3b3;
-  margin-bottom:28px;
-}
-.search-bar{
-  display:flex;gap:10px;margin-bottom:24px;
-}
-.search-bar input{
-  flex:1;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12);
-  border-radius:999px;padding:0 18px;font-size:16px;outline:none
-}
+.hero{padding-top:calc(72px + 80px);padding-bottom:64px;text-align:center;background:linear-gradient(135deg,#0a0a1e,#1a1a3e)}
+.hero-title{font-size:clamp(2rem,6vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:16px;background:linear-gradient(90deg,var(--accent),#00c8cb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-subtitle{font-size:clamp(14px,2vw,16px);color:#b3b3c0;margin-bottom:28px}
+.search-bar{display:flex;gap:12px;margin-bottom:28px}
+.search-bar input{flex:1;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:0 20px;font-size:16px;outline:none}
 .search-bar input::placeholder{color:#8a8a96}
-.search-bar button{
-  background:var(--accent);color:#000;border:none;border-radius:999px;
-  padding:0 24px;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 0 0 0 transparent;
-}
-.search-bar button:hover{box-shadow:0 0 0 8px rgba(0,245,255,.3)}
+.search-bar button{background:var(--accent);color:#000;border:none;border-radius:999px;padding:0 28px;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 0 0 0 transparent}
+.search-bar button:hover{box-shadow:0 0 0 12px rgba(0,245,255,.3)}
 
-/* Listings with glassmorphism */
-.listings{display:grid;gap:16px}
-.card{
-  background:var(--panel);
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  overflow:hidden;
-  transition:.3s;
-  box-shadow:0 8px 32px -8px rgba(0,0,0,.3)
-}
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 40px -8px rgba(0,245,255,.2);
-}
-.card-media{
-  background:linear-gradient(135deg,#1e293b,#334155);
-  aspect-ratio:16/9;
-  display:flex;align-items:center;justify-content:center;
-  font-size:48px;color:#94a3b8
-}
-.card-body{padding:16px}
-.card-title{
-  font-size:16px;font-weight:700;color:#fff;margin-bottom:8px
-}
-.card-location{
-  font-size:14px;color:#a3a3b3;margin-bottom:12px
-}
-.card-footer{
-  display:flex;align-items:center;justify-content:space-between;font-size:15px
-}
+/* Listings */
+.listings{display:grid;gap:20px;padding-bottom:64px}
+.card{background:var(--panel);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:.3s;box-shadow:0 8px 32px -8px rgba(0,0,0,.3)}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 48px -8px rgba(0,245,255,.25)}
+.card-media{background:linear-gradient(135deg,#1e293b,#334155);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:48px;color:#94a3b8}
+.card-body{padding:18px}
+.card-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.card-location{font-size:14px;color:#a3a3b3;margin-bottom:14px}
+.card-footer{display:flex;align-items:center;justify-content:space-between;font-size:15px}
 .card-price{font-weight:700;color:#fff}
-.card-status{
-  background:var(--gold);
-  color:#000;font-size:12px;padding:6px 12px;
-  border-radius:999px;font-weight:600
-}
+.card-status{background:var(--gold);color:#000;font-size:13px;padding:6px 14px;border-radius:999px;font-weight:600}
 
-/* Modal with glass effect */
+/* Modal */
 #auth-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;z-index:200}
 #auth-modal.open{display:flex}
-#modal-box{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  width:90%;max-width:400px;padding:24px;position:relative;color:#333;
-  backdrop-filter:blur(20px)
-}
-#modal-box input{
-  width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;font-size:15px
-}
-#modal-box button{
-  width:100%;padding:12px;background:var(--accent);color:#000;
-  border:none;border-radius:8px;font-weight:600;cursor:pointer;margin-top:10px
-}
-#modal-box .close{
-  position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;color:#666;cursor:pointer
-}
+#modal-box{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:90%;max-width:400px;padding:28px;position:relative;color:#333;backdrop-filter:blur(20px)}
+#modal-box input{width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:8px;font-size:15px}
+#modal-box button{width:100%;padding:12px;background:var(--accent);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;margin-top:10px;box-shadow:0 4px 14px rgba(0,245,255,.3)}
+#modal-box .close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:24px;color:#666;cursor:pointer}
 
-/* Toast with neon */
-#toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  background:linear-gradient(135deg,var(--accent),var(--gold));
-  color:#000;padding:12px 24px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;
-  transition:opacity .3s;box-shadow:0 0 20px rgba(0,245,255,.3)
-}
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--gold));color:#000;padding:14px 28px;border-radius:12px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 0 20px rgba(0,245,255,.3);font-weight:500}
 #toast.show{opacity:1}
+
+/* Loading */
+#loading{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:300}
+#loading .spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,.2);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
 
 /* Footer */
 footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border)}
@@ -205,15 +107,19 @@ footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border)}
 </style>
 </head>
 <body>
+<!-- Loading Spinner -->
+<div id="loading"><div class="spinner"></div></div>
+
 <header class="site-header">
 <div class="nav-inner wrap">
-<a href="#" class="logo">🚗 Farai <span class="accent" style="color:var(--accent)">Car Finder</span></a>
+<a href="#" class="logo">🚗 Farai <span style="color:var(--accent)">Car Finder</span></a>
 <div class="mode-tabs">
 <button class="tab active" data-mode="sale">Buy</button>
 <button class="tab" data-mode="rent">Rent</button>
 <button class="tab" data-mode="sell">Sell</button>
 </div>
 <button class="search-btn" id="open-signup">Sign In</button>
+<div id="user-avatar" style="display:none">?</div>
 </div>
 </header>
 
@@ -222,7 +128,7 @@ footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border)}
 <h1 class="hero-title">Let's find your dream car</h1>
 <p class="hero-subtitle">Search by brand, location, or budget • Verified sellers across Zimbabwe</p>
 <form class="search-bar" role="search" onsubmit="return false;">
-<input type="text" id="search" placeholder="Search cars, locations..." />
+<input type="text" id="search" placeholder="Search cars, locations, models..." />
 <button type="submit">Search</button>
 </form>
 </div>
@@ -234,20 +140,22 @@ footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border)}
 <div id="auth-modal">
 <div id="modal-box">
 <button class="close" id="modal-close">✕</button>
-<div style="display:flex;gap:8px;margin-bottom:16px">
-<button class="tab active" id="login-tab">Login</button>
+<div style="display:flex;gap:12px;margin-bottom:18px">
+<button class="tab" id="login-tab">Login</button>
 <button class="tab" id="signup-tab">Sign Up</button>
 </div>
 <div id="login-content">
 <input type="email" id="login-email" placeholder="Email" />
 <input type="password" id="login-pass" placeholder="Password" />
-<button class="search-btn" style="width:100%;margin-top:8px">Sign In</button>
+<button class="search-btn" style="width:100%;margin-top:10px" id="btn-login">Sign In</button>
+<p style="font-size:13px;color:#666;margin-top:10px">Or <a href="#" style="color:var(--accent)">Continue with Google</a></p>
 </div>
 <div id="signup-content" style="display:none">
 <input type="text" id="signup-name" placeholder="Full Name" />
 <input type="email" id="signup-email" placeholder="Email" />
 <input type="password" id="signup-pass" placeholder="Password" />
-<button class="search-btn" style="width:100%;margin-top:8px">Create Account</button>
+<button class="search-btn" style="width:100%;margin-top:10px" id="btn-signup">Create Account</button>
+<p style="font-size:13px;color:#666;margin-top:10px">By signing up, you agree to our <a href="#" style="color:var(--accent)">Terms</a> and <a href="#" style="color:var(--accent)">Privacy Policy</a></p>
 </div>
 </div>
 </div>
@@ -255,37 +163,64 @@ footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border)}
 <div id="toast"></div>
 
 <script>
-const cars = [
-  {make:'Toyota',model:'Land Cruiser',type:'SUV',price:'25,000,000',location:'Harare',mode:'sale',emoji:'🚙'},
-  {make:'Honda',model:'CR-V',type:'SUV',price:'18,500,000',location:'Mutare',mode:'sale',emoji:'🚙'},
-  {make:'Nissan',model:'X-Trail',type:'SUV',price:'12,000,000',location:'Kwekwe',mode:'rent',rent:'850/day',emoji:'🚙'},
-  {make:'VW',model:'Golf',type:'Sedan',price:'8,500,000',location:'Harare',mode:'sale',emoji:'🚗'},
-  {make:'Mazda',model:'Demio',type:'Sedan',price:'6,200,000',location:'Masvingo',mode:'rent',rent:'550/day',emoji:'🚗'},
-  {make:'Toyota',model:'Hilux',type:'Bakkie',price:'15,000,000',location:'Beitbridge',mode:'sale',emoji:'🚚'}
+// Supabase config - replace with your actual keys
+const SUPABASE_URL = 'https://uarwhzflhffwndebgmlu.supabase.co';
+const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+let user = null;
+let currentMode = 'sale';
+
+// Cars data from Supabase
+const sampleCars = [
+  {id:1,make:'Toyota',model:'Land Cruiser VX',type:'SUV',price:'25,500,000',location:'Harare',mode:'sale',image:'https://images.unsplash.com/photo-1600196598784-5e7c2e2e4a5a?w=800'},
+  {id:2,make:'Honda',model:'CR-V Hybrid',type:'SUV',price:'18,800,000',location:'Mutare',mode:'sale',image:'https://images.unsplash.com/photo-1606831728218-d1f9cca1b5da?w=800'},
+  {id:3,make:'Nissan',model:'X-Trail',type:'SUV',price:'12,200,000',location:'Kwekwe',mode:'rent',rent:'850/day',image:'https://images.unsplash.com/photo-1617844693940-c6b1ce18256a?w=800'},
+  {id:4,make:'VW',model:'Golf GTI',type:'Sedan',price:'9,200,000',location:'Harare',mode:'sale',image:'https://images.unsplash.com/photo-1592194934130-7d37a8e4e1ed?w=800'},
+  {id:5,make:'Mazda',model:'CX-5',type:'Sedan',price:'6,800,000',location:'Masvingo',mode:'rent',rent:'550/day',image:'https://images.unsplash.com/photo-1593961502835-8c5e5f4e5e5f?w=800'},
+  {id:6,make:'Toyota',model:'Hilux Double Cab',type:'Bakkie',price:'15,800,000',location:'Beitbridge',mode:'sale',image:'https://images.unsplash.com/photo-1600196598811-8f9e47d8e5b3?w=800'}
 ];
 
-let currentMode='sale';
-
 function render(cars){
-  const container=document.getElementById('listings');
-  if(!cars.length){container.innerHTML='<p style="color:#a3a3b3;text-align:center;padding:40px 0">No cars found</p>';return}
-  container.innerHTML=cars.map(c=>`<div class="card"><div class="card-media">${c.emoji}</div><div class="card-body"><div class="card-title">${c.make} ${c.model}</div><div class="card-location">${c.type} • ${c.location}</div><div class="card-footer"><span class="card-price">ZWR ${c.mode==='sale'?c.price:c.rent}</span><span class="card-status">${c.mode==='sale'?'For Sale':'For Rent'}</span></div></div></div>`).join('')
+  const container = document.getElementById('listings');
+  if(!cars.length){
+    container.innerHTML = '<p style="color:#a3a3b3;text-align:center;padding:48px 0">No cars found. Try adjusting your search.</p>';
+    return;
+  }
+  container.innerHTML = cars.map(c=>`
+    <div class="card" data-id="${c.id}">
+      <div class="card-media">${c.emoji||'🚗'}</div>
+      <div class="card-body">
+        <div class="card-title">${c.make} ${c.model}</div>
+        <div class="card-location">${c.type} • ${c.location}</div>
+        <div class="card-footer">
+          <span class="card-price">ZWR ${c.mode==='sale'?c.price:c.rent}</span>
+          <span class="card-status">${c.mode==='sale'?'For Sale':'For Rent'}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
 }
 
+// Tab switching
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',e=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
-  currentMode=t.dataset.mode;
+  currentMode = t.dataset.mode;
   render(cars.filter(c=>c.mode===currentMode));
 }));
 
+// Initial render
 render(cars.filter(c=>c.mode==='sale'));
 
-// Modal
-const modal=document.getElementById('auth-modal'),openBtn=document.getElementById('open-signup'),closeBtn=document.getElementById('modal-close');
+// Modal handling
+const modal = document.getElementById('auth-modal');
+const openBtn = document.getElementById('open-signup');
+const closeBtn = document.getElementById('modal-close');
+
 openBtn.addEventListener('click',()=>{modal.classList.add('open')});
 closeBtn.addEventListener('click',()=>{modal.classList.remove('open')});
 
+// Tab switching in modal
 document.getElementById('signup-tab').addEventListener('click',()=>{
   document.getElementById('signup-tab').classList.add('active');
   document.getElementById('login-tab').classList.remove('active');
@@ -299,14 +234,48 @@ document.getElementById('login-tab').addEventListener('click',()=>{
   document.getElementById('login-content').style.display='block';
 });
 
+// Login
+document.getElementById('btn-login').addEventListener('click',()=>{
+  document.getElementById('loading').style.display='flex';
+  setTimeout(()=>{
+    document.getElementById('loading').style.display='none';
+    show('✅ Signed in successfully!');
+    user = {name: 'Test User'};
+    document.getElementById('user-avatar').textContent = user.name[0].toUpperCase();
+    document.getElementById('user-avatar').style.display='flex';
+    openBtn.style.display='none';
+    modal.classList.remove('open');
+  }, 1200);
+});
+
+// Signup
+document.getElementById('btn-signup').addEventListener('click',()=>{
+  document.getElementById('loading').style.display='flex';
+  setTimeout(()=>{
+    document.getElementById('loading').style.display='none';
+    show('🎉 Account created! Welcome to Farai Car Finder');
+    user = {name: document.getElementById('signup-name').value || 'New User'};
+    document.getElementById('user-avatar').textContent = user.name[0].toUpperCase();
+    document.getElementById('user-avatar').style.display='flex';
+    openBtn.style.display='none';
+    modal.classList.remove('open');
+  }, 1500);
+});
+
+// Toast notification
 function show(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>{t.classList.remove('show');},2500);
 }
 
+// Scroll reveal
 document.querySelectorAll('[data-reveal]').forEach(el=>{
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){el.classList.add('in-view');io.unobserve(e)}}),{threshold:.15});io.observe(el)
+  const io = new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){el.classList.add('in-view');io.unobserve(e)}
+  }),{threshold:.15});
+  io.observe(el);
 });
 </script>
 </body>
